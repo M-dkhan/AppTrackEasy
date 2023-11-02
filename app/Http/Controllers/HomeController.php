@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
@@ -91,6 +93,27 @@ class HomeController extends Controller
 
         // Save the job to the database
         $job->save();
+        // Handle document storage and association with the job
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $file) {
+                $document = new Document();
+                $document->job_id = $job->id;
+        
+                // Get the original filename from the uploaded file
+                $originalFilename = $file->getClientOriginalName();
+        
+                // Generate a new filename to avoid overwriting
+                $newFilename = $this->getUniqueFilename($originalFilename);
+        
+                // Store the file with the new filename
+                $file->storeAs('documents', $newFilename, 'custom');
+        
+                // Set the file_path attribute as the new filename
+                $document->file_path = $newFilename;
+        
+                $document->save();
+            }
+        }
 
         return response()->json(['message' => 'Job created successfully']);
     }
@@ -134,5 +157,17 @@ class HomeController extends Controller
         $job->delete(); 
         return response()->json(['message' => 'Job archived successfully']);
     }
+    private function getUniqueFilename($originalFilename) {
+        $extension = pathinfo($originalFilename, PATHINFO_EXTENSION);
+        $filename = pathinfo($originalFilename, PATHINFO_FILENAME);
+        $count = 1;
     
+        // Check if the file with the new filename already exists
+        while (Storage::disk('custom')->exists("documents/{$filename}-{$count}.{$extension}")) {
+            $count++;
+        }
+    
+        // Create a unique filename with numbering
+        return "{$filename}-{$count}.{$extension}";
+    }
 }

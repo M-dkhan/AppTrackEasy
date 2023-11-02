@@ -11,7 +11,7 @@
         <div class="modal-body custom-body">
           <div class="modal-body custom-body">
             <!-- Add your form fields for adding a new job here -->
-            <form id="addJobForm">
+            <form id="addJobForm" enctype="multipart/form-data">
               @csrf
               <div class="form-group custom-group">
                 <label for="job_title">Job Title</label>
@@ -46,6 +46,14 @@
                 <textarea class="form-control custom-textarea" id="notes_or_comments" name="notes_or_comments" rows="3"></textarea>
               </div>
 
+              <div class="form-group custom-file-group">
+                <label for="file-upload" class="custom-file-label">Select Files</label>
+                <input type="file" name="files[]" id="file-upload" class="custom-file-input" multiple  enctype="multipart/form-data">
+                <input type="hidden" name="associate-with-job" value="1">
+                <div class="file-names"></div>
+              </div>
+              
+              
               <div class="modal-footer custom-footer">
                 <button type="button" class="modal-close btn btn-secondary custom-close-button" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary custom-save-button">Save</button>
@@ -62,6 +70,24 @@
 <script>
   $(document).ready(function () {
 
+    // Get the file input element
+    const fileInput = $('#file-upload');
+    
+    // Get the custom file label element
+    const customFileLabel = $('.custom-file-label');
+    
+    // Get the element to display file names
+    const fileNamesElement = $('.file-names');
+    
+    // Add an event listener to the file input
+    fileInput.on('change', function() {
+      // Display the selected file names next to the upload button
+      const fileNames = Array.from(this.files)
+        .map(file => file.name)
+        .join(', ');
+      fileNamesElement.text(fileNames);
+    });
+
     $('.btn-add-new').on('click', function() {
       $('#addJobModal').modal('show'); // Open the modal
     });
@@ -71,17 +97,19 @@
     });
 
     $('#addJobForm').on('submit', function (e) {
-      console.log('button pressed')
+      console.log('button pressed');
       e.preventDefault(); // Prevent the default form submission
 
-      // Serialize form data
-      var formData = $(this).serialize();
+      // Create a FormData object to capture all form data, including files
+      var formData = new FormData(this);
 
       // Send an AJAX request to the Laravel route
       $.ajax({
         type: 'POST', // Use the appropriate HTTP method (e.g., POST)
         url: '/jobs', // Replace with the URL of your controller method
         data: formData,
+        processData: false, // Don't process the data (required for FormData)
+        contentType: false, // Don't set content type (required for FormData)
         success: function (response) {
           // Clear any previous validation error messages
           $('#validationErrors').hide().empty();
@@ -93,7 +121,7 @@
           $('#addJobForm')[0].reset();
           setTimeout(function () {
                         location.reload();
-                    }, 1000);
+                    }, 100);
         },
         error: function (xhr) {
           // Handle validation errors
@@ -109,7 +137,8 @@
           $('#successMessage').hide();
         }
       });
-    });
+  });
+
   
   });
 </script>

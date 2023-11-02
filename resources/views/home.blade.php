@@ -88,6 +88,11 @@
             </th>
             <th>
               <div class="d-flex justify-content-between">
+                Submitted Documents
+              </div>
+            </th>
+            <th>
+              <div class="d-flex justify-content-between">
                 Actions
                 
               </div>
@@ -121,8 +126,12 @@
                 @else
                     {{ $job->notes_or_comments }}
                 @endif
-            </td>
-            
+              </td>
+                <td>
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-primary btn-view-documents" data-id="{{$job->id}}"><i class="fas fa-eye"></i> View</button>
+                  </div>
+                </td>
               <td>
                   <div class="btn-group">
                       <button type="button" class="btn btn-primary btn-view-job" data-id="{{$job->id}}">View</button>
