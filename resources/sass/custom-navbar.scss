@@ -1,0 +1,55 @@
+/* custom-navbar.scss */
+.navbar {
+    background-color: #4CAF50; /* Change to your desired background color, e.g., green */
+    border-radius: 0; /* Optional: Remove border radius for a squared look */
+}
+
+.navbar a.navbar-brand {
+    color: #333; /* Text color for the brand name */
+    font-weight: bold;
+}
+
+.navbar-toggler-icon {
+    color: #333; /* Color of the toggle icon */
+}
+
+.navbar-collapse {
+    justify-content: flex-end; /* Align right for right-side items */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px; /* Adjust spacing between menu items */
+}
+
+.navbar-nav .nav-link {
+    color: #333; /* Text color for menu items */
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #000000; /* Text color for menu items on hover */
+}
+
+/* Styling for the user dropdown (authentication links) */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.nav-link.dropdown-toggle::after {
+    content: '\25BC'; /* Down arrow for dropdown toggle */
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    background-color: #4CAF50; /* Background color for the dropdown menu, matching the theme color */
+    border: none; /* Remove border for the dropdown menu */
+}
+
+.dropdown-item {
+    color: #fff; /* Text color for dropdown items */
+}
+
+.dropdown-item:hover {
+    background-color: #45A148; /* Background color for dropdown items on hover, slightly darker green */
+}

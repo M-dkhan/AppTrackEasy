@@ -1,0 +1,66 @@
+
+  /* Custom CSS for the table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .table th {
+    background-color: #f8f9fa;
+  }
+
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+  .badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+
+  .badge.bg-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .badge.bg-warning {
+    background-color: #ffc107;
+    color: #000;
+  }
+
+  .badge.bg-info {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+
+  .btn-group button {
+    margin: 0 5px;
+  }
+
+  .btn-group button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .btn-group button.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+  }
+
+  .btn-group button.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  .hello{
+    background-color: #000;
+  }
+
