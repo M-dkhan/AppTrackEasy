@@ -186,3 +186,87 @@
   overflow: hidden;
   text-overflow: ellipsis; /* Optional: Adds an ellipsis (...) if the text overflows the label */
 }
+
+
+/* Container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5; /* Background color */
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border: none;
+  background: #fff; /* Card background color */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.auth-card-header {
+  background-color: #3498db; /* Header background color */
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.auth-card-body {
+  padding: 20px;
+}
+
+/* Form Elements */
+.auth-form-control {
+  margin-bottom: 1px;
+  border: none; /* Remove the border around input fields */
+  border-radius: 5px;
+  padding: 5px;
+}
+
+
+.auth-form-control:focus {
+  border-color: #3498db; /* Focus color */
+}
+
+/* Buttons */
+.auth-btn-primary {
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-btn-primary:hover {
+  background-color: #0056b3; /* Hover color */
+}
+
+/* Error Messages */
+.auth-invalid-feedback {
+  color: #dc3545;
+  font-size: 14px;
+}
+
+/* Remember Me Checkbox */
+.auth-form-check-label {
+  font-weight: bold;
+}
+
+/* Additional Styling (Customization) */
+.auth-password {
+  /* Add more specific styles for the password input field if needed */
+}
+
+/* Custom Background */
+body {
+  background: url('background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
