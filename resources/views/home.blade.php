@@ -154,10 +154,10 @@
 
 </div>
 
-@include('components.create-job-modal')
-@include('components.view-job-modal')
-@include('components.edit-job-modal')
-@include('components.archive-job-modal')
+@include('components.jobs.create-job-modal')
+@include('components.jobs.view-job-modal')
+@include('components.jobs.edit-job-modal')
+@include('components.jobs.archive-job-modal')
 
 <script>
   $(document).ready(function () {

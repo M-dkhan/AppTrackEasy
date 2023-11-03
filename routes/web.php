@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,5 @@ Route::post('/jobs', [App\Http\Controllers\HomeController::class, 'store'])->nam
 Route::get('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'show'])->name('jobs.show');
 Route::put('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'update'])->name('jobs.update');
 Route::delete('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'archive'])->name('jobs.archive');
-
+Route::get('/get_job_documents/{jobId}', [HomeController::class, 'getJobDocuments'])->name('job.getDocuments');
 

@@ -170,4 +170,13 @@ class HomeController extends Controller
         // Create a unique filename with numbering
         return "{$filename}-{$count}.{$extension}";
     }
+
+
+    public function getJobDocuments($jobId)
+    {
+        $job = Job::findOrFail($jobId);
+        $documents = $job->documents;
+        return response()->json(['documents' => $documents]);
+    }
+
 }
