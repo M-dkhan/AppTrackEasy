@@ -47,13 +47,13 @@
               </div>
 
               <div class="form-group custom-file-group">
-                <label for="file-upload" class="custom-file-label">Select Files</label>
+                <label for="file-upload" class="custom-file-label">Upload Docs</label>
                 <input type="file" name="files[]" id="file-upload" class="custom-file-input" multiple  enctype="multipart/form-data">
                 <input type="hidden" name="associate-with-job" value="1">
                 <div class="file-names"></div>
-              </div>
+              </div>              
               
-              
+
               <div class="modal-footer custom-footer">
                 <button type="button" class="modal-close btn btn-secondary custom-close-button" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary custom-save-button">Save</button>
@@ -94,6 +94,7 @@
 
     $('#addJobModal .modal-close').click(function() {
       $('#addJobModal').modal('hide');
+      $('#addJobForm')[0].reset();
     });
 
     $('#addJobForm').on('submit', function (e) {

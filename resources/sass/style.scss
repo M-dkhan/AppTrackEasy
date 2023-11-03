@@ -179,3 +179,10 @@
     color: #555;
     margin-top: 5px;
   }
+
+  /* CSS to keep label text on one line */
+.custom-file-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional: Adds an ellipsis (...) if the text overflows the label */
+}
