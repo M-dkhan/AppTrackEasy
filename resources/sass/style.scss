@@ -281,3 +281,13 @@ body {
   background: url('background-image.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
+/* Custom CSS for document list */
+.file-name {
+  flex: 1; /* Allow the file name to grow and take up available space */
+}
+
+/* Adjust spacing between list items */
+.list-group-item {
+  margin-bottom: 10px;
+}

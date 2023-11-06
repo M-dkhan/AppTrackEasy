@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,5 @@ Route::get('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'show'])-
 Route::put('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'update'])->name('jobs.update');
 Route::delete('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'archive'])->name('jobs.archive');
 Route::get('/get_job_documents/{jobId}', [HomeController::class, 'getJobDocuments'])->name('job.getDocuments');
+Route::get('/download-document/{documentId}', [DocumentController::class, 'download'])->name('document.download');
 

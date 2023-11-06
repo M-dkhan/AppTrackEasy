@@ -98,19 +98,19 @@ class HomeController extends Controller
             foreach ($request->file('files') as $file) {
                 $document = new Document();
                 $document->job_id = $job->id;
-        
+    
                 // Get the original filename from the uploaded file
                 $originalFilename = $file->getClientOriginalName();
-        
+    
                 // Generate a new filename to avoid overwriting
                 $newFilename = $this->getUniqueFilename($originalFilename);
-        
-                // Store the file with the new filename and get the full path
-                $filePath = $file->storeAs('documents', $newFilename, 'custom');
-        
-                // Set the file_path attribute as the full file path
-                $document->file_path = $filePath;
-        
+    
+                // Store the file with the new filename in the storage/app/public directory
+                $filePath = $file->storeAs('public/documents', $newFilename, 'local');
+    
+                // Set the file_path attribute as the path relative to storage/app/public
+                $document->file_path = 'documents/' . $newFilename;
+    
                 $document->save();
             }
         }

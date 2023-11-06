@@ -153,7 +153,7 @@
               </td>
                 <td>
                   <div class="btn-group">
-                      <button type="button" class="btn btn-primary btn-view-documents" data-id="{{$job->id}}"><i class="fa-solid fa-eye"></i> View Docs</button>
+                      <button type="button" class="btn btn-primary btn-view-job-documents" data-id="{{$job->id}}"><i class="fa-solid fa-eye"></i> View Docs</button>
                   </div>
                 </td>
               <td>
@@ -182,7 +182,7 @@
 @include('components.jobs.view-job-modal')
 @include('components.jobs.edit-job-modal')
 @include('components.jobs.archive-job-modal')
-
+@include('components.jobs.documents.view-job-documents')
 <script>
   $(document).ready(function () {
   });
