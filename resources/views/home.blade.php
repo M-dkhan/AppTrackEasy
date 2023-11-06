@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container">
+<div class=" container home-container">
   
   <div class="d-flex justify-content-between align-items-center">
     <button type="button" class="btn btn-primary btn-add-new">Add New</button>
@@ -102,10 +102,34 @@
       <tbody>
         @forelse ($jobs as $job)
           <tr>
-              <td>{{$job->job_title}}</td>
-              <td>{{$job->company_name}}</td>
-              <td>{{$job->application_date}}</td>
-              <td>{{$job->application_deadline}}</td>
+              <td>
+                @if (strlen($job->job_title) > 50)
+                    {{ substr($job->job_title, 0, 50) }}...
+                @else
+                    {{ $job->job_title }}
+                @endif
+              </td>
+              <td>
+                @if (strlen($job->company_name) > 50)
+                    {{ substr($job->company_name, 0, 50) }}...
+                @else
+                    {{ $job->company_name }}
+                @endif
+              </td>
+              <td>
+                @if (strlen($job->application_date) > 50)
+                    {{ substr($job->application_date, 0, 50) }}...
+                @else
+                    {{ $job->application_date }}
+                @endif
+              </td>
+              <td>
+                @if (strlen($job->application_deadline) > 50)
+                    {{ substr($job->application_deadline, 0, 50) }}...
+                @else
+                    {{ $job->application_deadline }}
+                @endif
+              </td>
               <td>
                 @php
                     $statusColor = '';
@@ -129,7 +153,7 @@
               </td>
                 <td>
                   <div class="btn-group">
-                      <button type="button" class="btn btn-primary btn-view-documents" data-id="{{$job->id}}"><i class="fas fa-eye"></i> View</button>
+                      <button type="button" class="btn btn-primary btn-view-documents" data-id="{{$job->id}}"><i class="fas fa-eye"></i> View Docs</button>
                   </div>
                 </td>
               <td>

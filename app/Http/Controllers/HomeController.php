@@ -105,15 +105,16 @@ class HomeController extends Controller
                 // Generate a new filename to avoid overwriting
                 $newFilename = $this->getUniqueFilename($originalFilename);
         
-                // Store the file with the new filename
-                $file->storeAs('documents', $newFilename, 'custom');
+                // Store the file with the new filename and get the full path
+                $filePath = $file->storeAs('documents', $newFilename, 'custom');
         
-                // Set the file_path attribute as the new filename
-                $document->file_path = $newFilename;
+                // Set the file_path attribute as the full file path
+                $document->file_path = $filePath;
         
                 $document->save();
             }
         }
+        
 
         return response()->json(['message' => 'Job created successfully']);
     }

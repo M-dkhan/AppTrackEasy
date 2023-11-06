@@ -1,11 +1,19 @@
 /* Add new button styling */
+.home-container{
+  max-width: max-content;
+}
+
 .btn-add-new {
-    border-radius: 20px;
+    border-radius:10px;
     margin-bottom: 20px;
 }
 
   /* table styling  */
-
+  .table-primary{
+      text-align: center; /* Center text horizontally */
+      vertical-align: middle; /* Center text vertically */
+    
+  }
   .custom-table {
     border-radius: 15px;
     border-collapse: separate;
@@ -53,6 +61,7 @@
   .search-form {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
   }
 
   .search-input {
