@@ -13,25 +13,43 @@ class DocumentController extends Controller
     public function uploadDocument(Request $request)
     {
         // Validate and store the uploaded document
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $document = new Document();
 
-        $document = new Document([
-            'title' => $request->title,
-            'description' => $request->description,
-            'file_path' => $request->file('file')->store('documents'),
-        ]);
+            // Get the original filename from the uploaded file
+            $originalFilename = $file->getClientOriginalName();
 
-        if ($request->has('associate_with_job')) {
-            // Associate the document with a job
-            $document->job_id = $request->job_id;
-        } elseif ($request->has('associate_with_user')) {
-            // Associate the document with a user
-            $document->user_id = Auth::user()->id;
+            // Generate a unique filename to avoid overwriting existing files
+            $newFilename = $file->getClientOriginalName(); // Example: timestamp_originalfilename
+
+            // Store the file with the new filename in the storage/app/public directory
+            $filePath = $file->storeAs('public/documents', $newFilename, 'local');
+
+            // Set the file_path attribute as the path relative to storage/app/public
+            $document->file_path = 'documents/' . $newFilename;
+
+            $document->save();
+
+            if ($request->has('associate_with_job')) {
+                // Associate the document with a job
+                $document->job_id = $request->job_id;
+            } elseif ($request->has('associate_with_user')) {
+                // Associate the document with a user
+                $document->user_id = Auth::user()->id;
+            }
+
+            $document->save();
+
+            // Return a success response or any other desired response
+            return response()->json(['message' => 'Document uploaded successfully']);
         }
-        $document->save();
 
-        // Redirect or return a response
+        // Handle the case where no file was uploaded
+        return response()->json(['error' => 'No file was uploaded'], 422);
     }
 
+    
     public function download($documentId)
     {
         // Retrieve the document information from the database

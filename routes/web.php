@@ -24,4 +24,5 @@ Route::put('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'update']
 Route::delete('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'archive'])->name('jobs.archive');
 Route::get('/get_job_documents/{jobId}', [HomeController::class, 'getJobDocuments'])->name('job.getDocuments');
 Route::get('/download-document/{documentId}', [DocumentController::class, 'download'])->name('document.download');
+Route::post('/upload-document', [DocumentController::class, 'uploadDocument'])->name('document.upload');
 

@@ -291,3 +291,21 @@ body {
 .list-group-item {
   margin-bottom: 10px;
 }
+
+.text-break {
+  word-wrap: break-word;
+}
+/* Style the label to look like a button */
+.custom-file-label {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px 20px; /* Padding for the button */
+  border: none;
+  cursor: pointer;
+}
+
+/* Remove the default file input styles */
+.custom-file-input {
+  display: none;
+}
+
