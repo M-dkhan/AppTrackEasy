@@ -103,29 +103,29 @@
         @forelse ($jobs as $job)
           <tr>
               <td>
-                @if (strlen($job->job_title) > 50)
-                    {{ substr($job->job_title, 0, 50) }}...
+                @if (strlen($job->job_title) > 20)
+                    {{ substr($job->job_title, 0, 20) }}...
                 @else
                     {{ $job->job_title }}
                 @endif
               </td>
               <td>
-                @if (strlen($job->company_name) > 50)
-                    {{ substr($job->company_name, 0, 50) }}...
+                @if (strlen($job->company_name) > 20)
+                    {{ substr($job->company_name, 0, 20) }}...
                 @else
                     {{ $job->company_name }}
                 @endif
               </td>
               <td>
-                @if (strlen($job->application_date) > 50)
-                    {{ substr($job->application_date, 0, 50) }}...
+                @if (strlen($job->application_date) > 20)
+                    {{ substr($job->application_date, 0, 20) }}...
                 @else
                     {{ $job->application_date }}
                 @endif
               </td>
               <td>
-                @if (strlen($job->application_deadline) > 50)
-                    {{ substr($job->application_deadline, 0, 50) }}...
+                @if (strlen($job->application_deadline) > 20)
+                    {{ substr($job->application_deadline, 0, 20) }}...
                 @else
                     {{ $job->application_deadline }}
                 @endif
@@ -145,8 +145,8 @@
             </td>
               <td>{{$job->contact_information}}</td>
               <td>
-                @if (strlen($job->notes_or_comments) > 50)
-                    {{ substr($job->notes_or_comments, 0, 50) }}...
+                @if (strlen($job->notes_or_comments) > 20)
+                    {{ substr($job->notes_or_comments, 0, 20) }}...
                 @else
                     {{ $job->notes_or_comments }}
                 @endif
