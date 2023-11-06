@@ -1,6 +1,6 @@
 /* Add new button styling */
 .home-container{
-  max-width: max-content;
+  max-width: 1300px;
 }
 
 .btn-add-new {
@@ -52,9 +52,11 @@
 
 /* Style for the "Add New" button */
 .btn-add-new {
-    background-color: #3498db; /* Blue background color */
-    color: #fff; /* White text color */
-    border: none;
+  /* background-color: #3498db; */
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
 }
 
   /* Style for the search form */
@@ -71,7 +73,7 @@
   }
 
   .search-button {
-    background-color: #3498db; /* Green background color */
+    background-color: #0275d8; /* Green background color */
     color: #fff; /* White text color */
     border: none;
   }

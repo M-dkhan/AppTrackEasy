@@ -5,10 +5,10 @@
 <div class=" container home-container">
   
   <div class="d-flex justify-content-between align-items-center">
-    <button type="button" class="btn btn-primary btn-add-new">Add New</button>
+    <button type="button" class="btn btn-primary btn-add-new"><i class="fa-solid fa-file-circle-plus"></i></button>
     <form class="search-form" method="GET" action="{{ route('home') }}">
       <input class="form-control search-input" type="search" name="search" placeholder="Search" aria-label="Search" value="{{$search}}">
-      <button class="btn btn-outline-primary search-button" type="submit">Search</button>
+      <button class="btn btn-outline-primary search-button" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
   </form>
   
   </div>
@@ -153,14 +153,14 @@
               </td>
                 <td>
                   <div class="btn-group">
-                      <button type="button" class="btn btn-primary btn-view-documents" data-id="{{$job->id}}"><i class="fas fa-eye"></i> View Docs</button>
+                      <button type="button" class="btn btn-primary btn-view-documents" data-id="{{$job->id}}"><i class="fa-solid fa-eye"></i> View Docs</button>
                   </div>
                 </td>
               <td>
                   <div class="btn-group">
-                      <button type="button" class="btn btn-primary btn-view-job" data-id="{{$job->id}}">View</button>
-                      <button type="button" class="btn btn-secondary btn-edit-job" data-id="{{$job->id}}">Edit</button>
-                      <button type="button" class="btn btn-danger btn-archive-job" data-id="{{$job->id}}">Archive</button>
+                      <button type="button" class="btn btn-primary btn-view-job" data-id="{{$job->id}}"><i class="fa-solid fa-eye"></i></button>
+                      <button type="button" class="btn btn-secondary btn-edit-job" data-id="{{$job->id}}"><i class="fa-regular fa-pen-to-square"></i></button>
+                      <button type="button" class="btn btn-danger btn-archive-job" data-id="{{$job->id}}"><i class="fa-solid fa-trash"></i></button>
                   </div>
               </td>
           </tr>
