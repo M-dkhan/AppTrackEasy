@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Document;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use PO;
 
 class DocumentController extends Controller
 {
@@ -21,7 +22,7 @@ class DocumentController extends Controller
             $originalFilename = $file->getClientOriginalName();
 
             // Generate a unique filename to avoid overwriting existing files
-            $newFilename = $file->getClientOriginalName(); // Example: timestamp_originalfilename
+            $newFilename = $file->getClientOriginalName(); 
 
             // Store the file with the new filename in the storage/app/public directory
             $filePath = $file->storeAs('public/documents', $newFilename, 'local');
@@ -70,8 +71,25 @@ class DocumentController extends Controller
         }
     }
 
+    public function deleteDocument($documentId){
+        $document = Document::find($documentId);
+        if (!$document) {
+            abort(404);
+        }
     
-
-
+        // Get the file path associated with the document
+        $filePath = $document->file_path;
+    
+        // Delete the document record from the database
+        $document->delete();
+    
+        // Delete the associated file from storage
+        if ($filePath) {
+            Storage::delete($filePath);
+        }
+    
+        return response()->json(['message' => 'Document deleted successfully']);
+    }
+    
 
 }

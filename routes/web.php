@@ -25,4 +25,5 @@ Route::delete('/jobs/{job}', [App\Http\Controllers\HomeController::class, 'archi
 Route::get('/get_job_documents/{jobId}', [HomeController::class, 'getJobDocuments'])->name('job.getDocuments');
 Route::get('/download-document/{documentId}', [DocumentController::class, 'download'])->name('document.download');
 Route::post('/upload-document', [DocumentController::class, 'uploadDocument'])->name('document.upload');
+Route::delete('/delete-document/{documentId}', [DocumentController::class, 'deleteDocument'])->name('document.delete');
 
